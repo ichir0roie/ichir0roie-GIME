@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup as bs
 import re
 
-soup=bs(open("文字頻度表.html"),"html.parser")
+soup=bs(open("Data/文字頻度表.html.txt"),"html.parser")
 vals=soup.find_all("td")
 vals=[i.text for i in vals ]
 c=0
