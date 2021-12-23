@@ -52,13 +52,14 @@ for i in range(len(keyboardPriority)):
 
 extendTypeList=[]
 for threeKey in typeListPriority:
-    threeKey=threeKey.lower()
+    threeKey=threeKey#.lower()
     keyS="S"+threeKey
     keyL="L"+threeKey
     extendTypeList.append(keyS)
     extendTypeList.append(keyL)
 typeListPriority.extend(extendTypeList)
 print(typeListPriority)
+
 
 # create gime
 
@@ -70,6 +71,13 @@ for c,keyChar in enumerate(listChar):
 for key in gimeList.keys():
     value=gimeList[key]
     print("{}\t{}".format(key,value))
+
+
+def saveShiftEco():
+    with open("Maps/getaroShiftEco.tsv",mode="w",encoding="utf-8")as f:
+        for key in gimeList.keys():
+            f.write("{}\t{}\n".format(key,gimeList[key]))
+saveShiftEco()
 
 print("----------------------------------------------------------------------------------")
 for row in lines[3:6]:
@@ -84,7 +92,7 @@ print("-------------------------------------------------------------------------
 for row in lines[3:6]:
     text=""
     for item in row.split("\t"):
-        key="S"+item.lower()
+        key="S"+item#.lower()
         if item in shiftKeys or not key in gimeList.keys():
             text+="  "+"\t"
             continue
@@ -94,7 +102,7 @@ print("-------------------------------------------------------------------------
 for row in lines[3:6]:
     text=""
     for item in row.split("\t"):
-        key="L"+item.lower()
+        key="L"+item#.lower()
         if item in shiftKeys or not key in gimeList.keys():
             text+="  "+"\t"
             continue
