@@ -111,15 +111,30 @@ def setText(text:str):
     saveText+=text+"\n"
     print(text)
 
+import pykakasi
+kakasi = pykakasi.kakasi() # インスタンスの作成
+kakasi.setMode('H', 'a') # ひらがなをローマ字に変換するように設定
+kakasi.setMode('K', 'a') # カタカナをローマ字に変換するように設定
+kakasi.setMode('J', 'a') # 漢字をローマ字に変換するように設定
+conversion = kakasi.getConverter() # 上記モード設定の適用
+
+xChar=["ぁ","ぃ","ぅ","ぇ","ぉ"]
+def myConversion(text):
+    # for xc in xChar:
+    #     text=text.replace(xc,"x"+xc)
+    return conversion.do(text)
+
 setText("----------------------------------------------------------------------------------")
 for row in lines[0:3]:
     text=""
+    textRoma=""
     for item in row.split("\t"):
         item = getThreeKey(item)
         if item in shiftKeys:
             text+=item.upper()+"\t"
             continue
         text+=gimeList[item]+"\t"
+    setText(myConversion(text))
     setText(text)
 setText("----------------------------------------------------------------------------------")
 for row in lines[0:3]:
@@ -133,6 +148,7 @@ for row in lines[0:3]:
             text+=""+"\t"
             continue
         text+=gimeList[key]+"\t"
+    setText(myConversion(text))
     setText(text)
 setText("----------------------------------------------------------------------------------")
 for row in lines[0:3]:
@@ -146,10 +162,12 @@ for row in lines[0:3]:
             text+=""+"\t"
             continue
         text+=gimeList[key]+"\t"
+    setText(myConversion(text))
     setText(text)
 setText("----------------------------------------------------------------------------------") 
 
 with open("OutPut/ShiftEcoView.tsv",mode="w",encoding="utf-8")as f:
     f.write(saveText)
+
 
 
