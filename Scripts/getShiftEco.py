@@ -130,7 +130,7 @@ for row in lines[0:3]:
             text+="S"+"\t"
             continue
         elif not key in gimeList.keys():
-            text+="  "+"\t"
+            text+=""+"\t"
             continue
         text+=gimeList[key]+"\t"
     setText(text)
@@ -143,7 +143,7 @@ for row in lines[0:3]:
             text+="L"+"\t"
             continue
         elif not key in gimeList.keys():
-            text+="  "+"\t"
+            text+=""+"\t"
             continue
         text+=gimeList[key]+"\t"
     setText(text)
