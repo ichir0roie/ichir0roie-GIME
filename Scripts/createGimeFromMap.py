@@ -6,7 +6,7 @@
 class createGimeFormMap:
     def __init__(self):
         self.gimes=[]
-        self.gimeCombined={}
+        self.gimeCombined=[]
         return
     
     def loadGime(self,fileName:str):
@@ -32,29 +32,40 @@ class createGimeFormMap:
 
     
     def combineGimes(self):
-        self.gimeCombined={}
+        self.gimeCombined=[]
 
         for gime in self.gimes:
-            self.gimeCombined.update(gime)
+            for key in gime.keys():
+                self.gimeCombined.append([key,gime[key]])
+            self.gimeCombined.append(None)
 
     def print(self):
-        for key in self.gimeCombined:
-            print("{}\t:\t{}".format(key,self.gimeCombined[key]))
+        for item in self.gimeCombined:
+            if item is None:
+                print("\n")
+                continue
+            key=item[0]
+            value=item[1]
+            print("{}\t:\t{}".format(key,value))
     
-    def save(self):
-        with open("Output/gime.tsv",mode="w",encoding="utf-8")as f:
-            for key in self.gimeCombined:
-                f.write("{}\t{}".format(key,self.gimeCombined[key])+"\n")
+    def save(self,mapName:str):
+        with open("Output/{}.tsv".format(mapName),mode="w",encoding="utf-8")as f:
+            for item in self.gimeCombined:
+                if item is None:
+                    f.write("\n")
+                    continue
+                f.write("{}\t{}".format(item[0],item[1])+"\n")
 
     
 if __name__=="__main__":
     cgf=createGimeFormMap()
     gimeList=[
         "getaroBase",
+        # "getaroShift",
+        "getaroShiftEco",
         "getaroSpecial",
-        "getaroShift"
     ]
     cgf.loadGimes(gimeList)
     cgf.combineGimes()
     cgf.print()
-    cgf.save()
+    cgf.save("gimeGetaroEco")
