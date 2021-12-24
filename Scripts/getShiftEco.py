@@ -105,7 +105,13 @@ def saveShiftEco():
             f.write("{}\t{}\n".format(key,gimeList[key]))
 saveShiftEco()
 
-print("----------------------------------------------------------------------------------")
+saveText=""
+def setText(text:str):
+    global saveText
+    saveText+=text+"\n"
+    print(text)
+
+setText("----------------------------------------------------------------------------------")
 for row in lines[0:3]:
     text=""
     for item in row.split("\t"):
@@ -114,8 +120,8 @@ for row in lines[0:3]:
             text+=item.upper()+"\t"
             continue
         text+=gimeList[item]+"\t"
-    print(text)
-print("----------------------------------------------------------------------------------")
+    setText(text)
+setText("----------------------------------------------------------------------------------")
 for row in lines[0:3]:
     text=""
     for item in row.split("\t"):
@@ -127,8 +133,8 @@ for row in lines[0:3]:
             text+="  "+"\t"
             continue
         text+=gimeList[key]+"\t"
-    print(text)
-print("----------------------------------------------------------------------------------")
+    setText(text)
+setText("----------------------------------------------------------------------------------")
 for row in lines[0:3]:
     text=""
     for item in row.split("\t"):
@@ -140,9 +146,10 @@ for row in lines[0:3]:
             text+="  "+"\t"
             continue
         text+=gimeList[key]+"\t"
-    print(text)
-print("----------------------------------------------------------------------------------") 
+    setText(text)
+setText("----------------------------------------------------------------------------------") 
 
-
+with open("OutPut/ShiftEcoView.tsv",mode="w",encoding="utf-8")as f:
+    f.write(saveText)
 
 
