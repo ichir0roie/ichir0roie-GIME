@@ -49,12 +49,18 @@ class createGimeFormMap:
             print("{}\t:\t{}".format(key,value))
     
     def save(self,mapName:str):
-        with open("Output/{}.tsv".format(mapName),mode="w",encoding="utf-8")as f:
-            for item in self.gimeCombined:
+        text=""
+        for item in self.gimeCombined:
                 if item is None:
-                    f.write("\n")
+                    text+="\n"
                     continue
-                f.write("{}\t{}".format(item[0],item[1])+"\n")
+                text+="{}\t{}".format(item[0],item[1])+"\n"
+
+        with open("../google ime.tsv",mode="w",encoding="utf-8")as f:
+            f.write(text)
+
+        with open("Output/{}.tsv".format(mapName),mode="w",encoding="utf-8")as f:
+            f.write(text)
 
     
 if __name__=="__main__":

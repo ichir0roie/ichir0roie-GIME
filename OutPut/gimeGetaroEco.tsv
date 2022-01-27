@@ -132,20 +132,32 @@ LC	うぇ
 S>	うぉ
 LX	にょ
 
-kj	//
-ku	…
-km	　
+(	｢
+{	(
+[	[
+d{	{
+)	｣
+}	)
+]	]
+s{	}
 df	･
-dv	※
-dr	～
+d:	～
+d=	=
+de	↑
+dc	↓
+dx	←
+dv	→
+sf	※
+s:	…
+km	　
 k,	,
 k.	.
+k/	/
+k;	;
+k:	:
+kj	//
 l,	<
 l.	>
-si	↑
-s,	↓
-sm	←
-s.	→
 -r	○
 -t	×
 -f	△
