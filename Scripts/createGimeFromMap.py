@@ -67,7 +67,7 @@ if __name__=="__main__":
     cgf=createGimeFormMap()
     gimeList=[
         # "getaroBase",
-        "getaroBaseForLaptop",
+        "getaroBaseDeleteAt",
         # "getaroShift",
         "getaroShiftEco",
         "getaroSpecial",
