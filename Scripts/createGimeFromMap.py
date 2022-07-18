@@ -69,8 +69,10 @@ if __name__=="__main__":
         # "getaroBase",
         "getaroBaseDeleteAt",
         # "getaroShift",
-        "getaroShiftEco",
-        "getaroSpecial",
+        "getaroShiftEcoBase",
+        # "getaroShiftEcoEasy",
+        # "getaroSpecial",
+        "getaroSpecialShiftSL",
     ]
     cgf.loadGimes(gimeList)
     cgf.combineGimes()
